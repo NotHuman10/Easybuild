@@ -1,0 +1,84 @@
+<ng-container *ngIf="advert$ | async as advert">
+    <div fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="20px">
+            <div>
+                <img [src]="advertImageUrl || './assets/img/no-image.png'" class="advert-img">
+            </div>
+            <div fxLayout="column" fxLayoutGap="10px" fxFlex>
+                <div class="advert-header">
+                    <app-favorite-indicator [advert]="advert"></app-favorite-indicator>
+                    <h1>{{advert.baseAdvert.title}}</h1>
+                </div>
+                <div class="advert-info">
+                    <span>Created:&nbsp;{{advert.baseAdvert.createdDate | date:'short'}}</span>
+                    <span>Location:&nbsp;{{advert.baseAdvert.address}}</span>
+                </div>
+                <p>{{advert.baseAdvert.description}}</p>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="column" fxLayoutGap="10px">
+            <h2>Author:</h2>
+            <div>
+                <div fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="10px" class="user-info">
+                    <div>
+                        <app-user-avatar [user]="advert.baseAdvert.user"></app-user-avatar>
+                    </div>
+                    <div>
+                        <div>
+                            <span
+                                class="full-name">{{advert.baseAdvert.user.name}}&nbsp;{{advert.baseAdvert.user.lastName}}</span>
+                        </div>
+                        <div>
+                            <app-rating displayValue="true" size="small" [disabled]="true"
+                                [value]="advert.baseAdvert.user.rating">
+                            </app-rating>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dv>
+                <div>
+                    <span>
+                        <mat-icon inline>alternate_email</mat-icon>&nbsp;{{advert.baseAdvert.user.username}}
+                    </span>
+                </div>
+                <div *ngIf="advert.baseAdvert.user.mobile">
+                    <span>
+                        <mat-icon inline>call</mat-icon>&nbsp;{{advert.baseAdvert.user.mobile}}
+                    </span>
+                </div>
+            </dv>
+            <div class="chat-with-author" *ngIf="!isMineAdvert">
+                <span>
+                    <mat-icon inline [routerLink]="['/chat']" [queryParams]="{ userId: advert.baseAdvert.userId }"
+                        color="accent">
+                        chat
+                    </mat-icon>
+                    Chat with author
+                </span>
+            </div>
+            <div class="advert-actions">
+                <button mat-raised-button color="warn" *ngIf="isMineAdvert;else contract"
+                    (click)="delete(advert.baseAdvert.id)">
+                    Delete advert
+                </button>
+                <ng-template #contract>
+                    <button mat-raised-button color="primary" [routerLink]="['/contract/create']"
+                        [queryParams]="{ advertId: advert.baseAdvert.id }">
+                        Propose collaboration
+                    </button>
+                </ng-template>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div>
+            <h2>Proposals:</h2>
+            <div fxLayout="column" fxLayoutGap="10px">
+                <div *ngFor="let proposal of advert.baseAdvert.jobProposals">
+                    <app-proposal [proposal]="proposal"></app-proposal>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

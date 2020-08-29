@@ -1,0 +1,11 @@
+@import '../app/advert/components/advert/advert.theme.scss';
+@import '../app/shared/components/proposal/proposal.theme.scss';
+@import '../app/chat/components/message/message.theme.scss';
+@import '../app/chat/components/chat/chat.theme.scss';
+
+@mixin component-theme($theme) {
+    @include advert-theme($theme);
+    @include proposal-theme($theme);
+    @include message-theme($theme);
+    @include chat-theme($theme);
+}

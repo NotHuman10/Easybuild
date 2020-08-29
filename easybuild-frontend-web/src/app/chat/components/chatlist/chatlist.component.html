@@ -1,0 +1,5 @@
+<ng-container *ngIf="$chatList$ | async as chats">
+    <div class="chat-list" fxLayout="column" fxLayoutGap="10px">
+        <app-chatlist-item [item]="chat" *ngFor="let chat of chats"></app-chatlist-item>
+    </div>
+</ng-container>

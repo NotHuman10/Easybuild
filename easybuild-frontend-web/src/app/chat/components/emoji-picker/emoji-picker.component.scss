@@ -1,0 +1,21 @@
+.emoji-picker {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 1.6em;
+    max-height: 300px;
+    overflow: auto;
+}
+.emoji-picker::after {
+    content: "";
+    flex: auto;
+}
+.emoji-picker > span {
+    display: block;
+    margin: 10px;
+    cursor: pointer;
+}
+.backdrop-transparent {
+    background: transparent;
+}

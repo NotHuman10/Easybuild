@@ -1,0 +1,8 @@
+@mixin proposal-theme($theme) {
+    $foreground: map-get($theme, 'foreground');
+    $color: mat-color($foreground, text, 0.1);
+    
+    .proposal-container tr:nth-child(1) {
+        background: $color;
+    }
+}

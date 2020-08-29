@@ -1,0 +1,17 @@
+<div class="img-picker-container">
+    <img [src]="(imgSrc || defaultImgSrc) | safeUrl"/>
+    <div class="img-picker-actions" fxLayout="row" fxLayoutAlign="center center" [hidden]="disabled">
+        <input #imgInput type="file" accept="image/*" hidden (change)="imageSelected($event)" />
+        <button mat-icon-button type="button" (click)="imgInput.click()" *ngIf="!imgSrc;else edit">
+            <mat-icon>add_a_photo</mat-icon>
+        </button>
+        <ng-template #edit>
+            <button mat-icon-button type="button" (click)="imgInput.click()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button type="button" (click)="removeImage()">
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+        </ng-template>
+    </div>
+</div>

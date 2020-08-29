@@ -1,0 +1,63 @@
+<mat-card class="proposal-container">
+  <form #proposalEditForm>
+    <table cellpadding="0">
+      <tr>
+        <td colspan="2">
+          <mat-form-field *ngIf="editable;else name">
+            <input matInput name="name" [(ngModel)]="proposal.name" maxlength="100" required [disabled]="disabled"
+              (ngModelChange)="modelChange()" />
+          </mat-form-field>
+          <ng-template #name>
+            <span>{{proposal.name}}</span>
+          </ng-template>
+        </td>
+        <td>
+          <button type="button" *ngIf="removable" mat-icon-button color="warn" (click)="remove()" [disabled]="disabled"
+            (ngModelChange)="modelChange()">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>Job&nbsp;category:</td>
+        <td colspan="2">{{proposal.jobCategory.name}}</td>
+      </tr>
+      <tr>
+        <td>Pricing&nbsp;unit:</td>
+        <td colspan="2">
+          <mat-form-field *ngIf="editable;else pricingUnit">
+            <input matInput name="pricingUnit" [(ngModel)]="proposal.pricingUnit" maxlength="100" required
+              [disabled]="disabled" (ngModelChange)="modelChange()" />
+          </mat-form-field>
+          <ng-template #pricingUnit>
+            <span>{{proposal.pricingUnit}}</span>
+          </ng-template>
+        </td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td colspan="2">
+          <mat-form-field *ngIf="editable;else price">
+            <input matInput type="number" name="price" [(ngModel)]="proposal.price" min="0" max="2000000000" required
+              [disabled]="disabled" (ngModelChange)="modelChange()" />
+          </mat-form-field>
+          <ng-template #price>
+            <span>{{proposal.price}}</span>
+          </ng-template>
+        </td>
+      </tr>
+      <tr>
+        <td>Amount:</td>
+        <td colspan="2">
+          <mat-form-field *ngIf="editable;else amount">
+            <input matInput type="number" name="amount" [(ngModel)]="proposal.amount" min="0" max="2000000000" required
+              [disabled]="disabled" />
+          </mat-form-field>
+          <ng-template #amount>
+            <span>{{proposal.amount}}</span>
+          </ng-template>
+        </td>
+      </tr>
+    </table>
+  </form>
+</mat-card>

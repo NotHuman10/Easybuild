@@ -1,0 +1,22 @@
+.chat-list-item {
+    cursor: pointer;
+}
+.chat-list-item > div {
+    display:inline-block;
+}
+.lastmsg-date, .lastmsg-text {
+    opacity: .7;
+}
+.lastmsg-date {
+    font-size: .8em;
+}
+.chat-list-item app-user-avatar {
+    width: 60px;
+    height: 60px;
+}
+.lastmsg-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 350px;
+}

@@ -1,0 +1,30 @@
+.advert-img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}
+.advert-info {
+    font-size: .8em;
+    opacity: .8;
+}
+.advert-info span {
+    padding-right: 10px;
+}
+.user-info span {
+    font-size: 1.3em;
+}
+.user-info app-user-avatar {
+    width: 60px;
+    height: 60px;
+}
+.chat-with-author mat-icon {
+    cursor: pointer;
+    font-size: 3em;
+    vertical-align: middle;
+    line-height: 100%;
+}
+.advert-header > * {
+    display: inline;
+    vertical-align: middle;
+    padding-right: 10px;
+}

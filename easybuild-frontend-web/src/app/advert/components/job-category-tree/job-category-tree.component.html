@@ -1,0 +1,29 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+        <mat-checkbox
+            [checked]="checklistSelection.isSelected(node)"
+            (change)="itemSelectionToggle(node)"
+            [disabled]="disabled">
+            {{node.item.name}}
+        </mat-checkbox>
+    </mat-tree-node>
+
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+        <button mat-icon-button matTreeNodeToggle type='button'>
+            <mat-icon class="mat-icon-rtl-mirror" matTreeNodeToggle>
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+        </button>
+        <mat-checkbox *ngIf="isMultiple;else singleSelect"
+            [checked]="descendantsAllSelected(node)"
+            [indeterminate]="descendantsPartiallySelected(node)"
+            (change)="itemSelectionToggle(node)"
+            [disabled]="disabled">
+            {{node.item.name}}
+        </mat-checkbox>
+        <ng-template #singleSelect>
+            {{node.item.name}}
+        </ng-template>
+    </mat-tree-node>
+</mat-tree>

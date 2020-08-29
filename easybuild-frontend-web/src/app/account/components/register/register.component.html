@@ -1,0 +1,107 @@
+<mat-card class="register-panel">
+    <form [formGroup]="registerForm" (submit)="onSubmit()" fxLayout="column" fxLayoutGap="10px">
+        <h3>REGISTER</h3>
+        <div>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" required maxlength="64">
+                <mat-error *ngIf="registerForm.get('email').hasError('email')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('email').hasError('required')">
+                    Email is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name" minlength="2" maxlength="32" required>
+                <mat-error *ngIf="registerForm.get('name').hasError('minlength')">
+                    Name must be at least 2 characters long
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('name').hasError('required')">
+                    Name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text" formControlName="lastName" minlength="2" maxlength="32" required>
+                <mat-error *ngIf="registerForm.get('lastName').hasError('minlength')">
+                    Last Name must be at least 2 characters long
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('lastName').hasError('required')">
+                    Last Name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Mobile phone</mat-label>
+                <span matPrefix>+&nbsp;</span>
+                <input matInput type="tel" placeholder="123456789098" formControlName="mobile">
+                <mat-error *ngIf="registerForm.get('mobile').hasError('pattern')">
+                    Mobile must be a number containing 12 - 15 digits
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div id="role-group">
+            <mat-label>Choose your role:</mat-label>
+            <mat-radio-group formControlName="role">
+                <mat-radio-button [value]="1">Customer</mat-radio-button>
+                <mat-radio-button [value]="2">Performer</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" maxlength="32" required>
+                <mat-error *ngIf="registerForm.get('password').hasError('pattern')">
+                    Password must contain 8 - 32 alpanumeric characters with both uppercase and lowercase
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('password').hasError('required')">
+                    Please enter a password
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" formControlName="retypePassword">
+                <mat-error *ngIf="registerForm.get('retypePassword').hasError('retypeInvalid')">
+                    Password and Confirmed Password doesn't match
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <div
+                matTooltip="fields are empty or incorrectly filled"
+                [matTooltipDisabled]="registerForm.valid"
+                matTooltipClass="bg-warn"
+                matTooltipPosition="above">
+                <button
+                    id="register-button"
+                    type="submit"
+                    mat-flat-button
+                    color="primary"
+                    [disabled]="registerForm.invalid">
+                    Register
+                </button>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div><span>Already have account?</span></div>
+            <div>
+                <button
+                    mat-button
+                    type="button"
+                    color="primary"
+                    routerLink="/account/login">
+                    Log In
+                </button>
+            </div>
+        </div>
+    </form>
+</mat-card>

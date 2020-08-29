@@ -1,0 +1,25 @@
+{
+    "shortid": "S1xh2enBQP",
+    "name": "Contract",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true,
+        "marginTop": "1.5 cm",
+        "marginRight": "1.5 cm",
+        "marginBottom": "1.5 cm",
+        "marginLeft": "1.5 cm",
+        "displayHeaderFooter": false
+    },
+    "creationDate": {
+        "$$date": 1598566941837
+    },
+    "modificationDate": {
+        "$$date": 1598570782797
+    },
+    "_id": "6lZTcKGcVi9gk1VA",
+    "$entitySet": "templates",
+    "data": {
+        "shortid": "HJxhtdhHXw"
+    }
+}

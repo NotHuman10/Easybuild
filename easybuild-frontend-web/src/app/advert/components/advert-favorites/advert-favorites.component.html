@@ -1,0 +1,56 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="nofavorites-placeholder"
+    *ngIf="!page.items?.length && !showOnlyMy;else favorites">
+    <h3>You don't have favorite adverts yet</h3>
+</div>
+
+<ng-template #favorites>
+    <div>
+        <mat-button-toggle-group matTooltip="Appearance" (change)="tileMode = !tileMode">
+            <mat-button-toggle checked="tileMode">
+                <mat-icon>view_module</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle checked="!tileMode">
+                <mat-icon>view_list</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        <button
+            mat-icon-button
+            color="accent"
+            matTooltip="show only my adverts"
+            matTooltipPosition="right"
+            (click)="toggleShowingMy()">
+            <mat-icon>{{showOnlyMy ? 'flag' : 'outlined_flag'}}</mat-icon>
+        </button>
+    </div>
+
+    <ng-container *ngIf="page.items?.length; then paginator"></ng-container>
+    <div class="search-results"
+        [fxLayout]="tileMode ? 'row wrap' : 'column wrap'"
+        fxLayoutGap="10px grid">
+        <app-advert
+            *ngFor="let item of page.items"
+            fxFlex.gt-xs="50"
+            fxFlex.gt-sm="33"
+            fxFlex.gt-md="25"
+            fxFlex.gt-lg="nogrow"
+            [tileMode]="tileMode"
+            [advert]="item"
+            (toggleFavorite)="toggleFavorite($event, item)">
+        </app-advert>
+    </div>
+    <ng-container *ngIf="page.items?.length; then paginator"></ng-container>
+
+</ng-template>
+
+<ng-template #paginator>
+    <div class="paginator">
+        <mat-paginator
+            [length]="page.totalItems"
+            [pageIndex]="page.pageIndex"
+            [pageSize]="page.pageSize"
+            [pageSizeOptions]="[5, 10, 20, 50]"
+            showFirstLastButtons="true"
+            (page)="search($event)">
+        </mat-paginator>
+    </div>
+</ng-template>

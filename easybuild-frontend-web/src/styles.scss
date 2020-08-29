@@ -1,0 +1,29 @@
+/* general */
+html, body { height: 100%; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    word-break: break-word;
+}
+* {
+    box-sizing: border-box;
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    width: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px inset;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgb(170, 170, 170);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(116, 116, 116);
+}

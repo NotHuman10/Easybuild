@@ -1,0 +1,53 @@
+<ng-container *ngIf="advert$ | async as advert">
+    <form [formGroup]="proposalsForm" fxLayout="column" fxLayoutGap="20px"
+        (submit)="submit(advert.baseAdvert.user)">
+        <h1>Now you can edit proposals</h1>
+        <div formArrayName="proposals" fxLayout="column" fxLayoutGap="10px">
+            <div *ngFor="let c of proposalsForm.controls['proposals']['controls']; index as i">
+                <app-proposal
+                    formControlName="{{i}}"
+                    editable="true"
+                    removable="true"
+                    (removed)="removeProposal(i)"
+                    [proposal]="c.value">
+                </app-proposal>
+            </div>
+        </div>
+        <div class="other-fields">
+            <h2>Some other fields left...</h2>
+            <div>
+                <mat-form-field appearance="fill" *ngIf="proposalsForm.controls['constructionSiteAddress']">
+                    <mat-label>Construction Site Address</mat-label>
+                    <input #address matInput formControlName="constructionSiteAddress" maxlength="256" required />
+                    <mat-hint align="end">{{address.value.length}} / 256</mat-hint>
+                </mat-form-field>
+            </div>
+            <div matTooltip="when the jobs above must be completed" matTooltipPosition="right">
+                <mat-form-field appearance="fill">
+                    <mat-label>Expiration date</mat-label>
+                    <input matInput [min]="tomorrow" [matDatepicker]="picker" formControlName="expirationDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div *ngIf="proposalsForm.invalid">
+            <mat-error *ngIf="proposalsForm.controls['proposals'].hasError('required');else otherError">
+                At least one proposal required to proceed
+            </mat-error>
+            <ng-template #otherError>
+                <mat-error>
+                    Some fields are incorrectly filled
+                </mat-error>
+            </ng-template>
+        </div>
+        <div fxLayout="row" fxLayoutGap="20px">
+            <button type="submit" mat-raised-button color="primary" [disabled]="proposalsForm.invalid">
+                Proceed
+            </button>
+            <button type="button" mat-raised-button color="accent" (click)="goBack()">
+                Cancel
+            </button>
+        </div>
+    </form>
+</ng-container>

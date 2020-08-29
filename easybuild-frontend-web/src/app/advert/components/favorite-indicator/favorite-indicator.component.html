@@ -1,0 +1,6 @@
+<mat-icon inline *ngIf="!isMineAdvert;else mineAdvert" color="warn" (click)="toggleFavorite()" class="clickable">
+    {{advert.isFavorite ? 'favorite' : 'favorite_border'}}
+</mat-icon>
+<ng-template #mineAdvert>
+    <mat-icon color="accent" inline>flag</mat-icon>
+</ng-template>

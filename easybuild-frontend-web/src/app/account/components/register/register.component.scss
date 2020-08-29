@@ -1,0 +1,19 @@
+.register-panel {
+  width: 450px;
+  margin: 0 auto;
+  padding: 30px;
+}
+mat-form-field {
+  width: 100%;
+  padding: 10px 0;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+#role-group {
+  display: flex;
+  justify-content: space-between;
+}
+#register-button {
+  width: 100%;
+}

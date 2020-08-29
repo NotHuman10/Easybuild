@@ -1,0 +1,44 @@
+<mat-toolbar id="main-toolbar" color="primary">
+    <mat-toolbar-row>
+        <img id="main-logo" [src]="isDarkTheme ? logoSrcDark : logoSrcLight" />
+        <span class="toolbar-spacer"></span>
+        <button mat-icon-button (click)="toggleTheme()">
+            <mat-icon>{{ isDarkTheme? 'nights_stay' : 'wb_sunny' }}</mat-icon>
+        </button>
+        <div *forAuthorized>
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon>
+                <span>Profile</span>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/account/profile-management">
+                  <mat-icon>settings</mat-icon>
+                  <span>Setings</span>
+                </button>
+                <button mat-menu-item routerLink="/chat/list">
+                    <mat-icon>mail</mat-icon>
+                    <span>Messages</span>
+                </button>
+                <button mat-menu-item routerLink="/contract/list">
+                    <mat-icon>request_quote</mat-icon>
+                    <span>Contracts</span>
+                </button>
+              </mat-menu>
+        </div>
+        <button *forAuthorized mat-button (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+        </button>
+        <div *forAnonymousOnly>
+            <button routerLink="/account/login" mat-button>
+                <mat-icon>person</mat-icon>
+                <span>Login</span>
+            </button>
+            <span>|</span>
+            <button routerLink="/account/register" mat-button>
+                <mat-icon>person_add</mat-icon>
+                <span>Register</span>
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

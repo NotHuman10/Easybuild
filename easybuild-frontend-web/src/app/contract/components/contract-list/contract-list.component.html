@@ -1,0 +1,43 @@
+<ng-container *ngIf="contracts$ | async as contracts">
+    <div fxLayout="row wrap" fxLayoutGap="30px grid">
+        <div *ngFor="let contract of contracts" fxFlex="25">
+            <mat-card>
+                <div class="contract-icon" (click)="showReportPdf(contract.id)">
+                    <mat-icon inline color="warn">picture_as_pdf</mat-icon>
+                </div>
+                <div>
+                    <span>#{{contract.id}}</span>
+                </div>
+                <div>
+                    <span>Customer:&nbsp;{{contract.customer?.name}}&nbsp;{{contract.customer?.lastName}}</span>
+                </div>
+                <div>
+                    <span>Performer:&nbsp;{{contract.performer?.name}}&nbsp;{{contract.performer?.lastName}}</span>
+                </div>
+                <div>
+                    <span>Created&nbsp;date:&nbsp;{{contract.createdDate | date:'short'}}</span>
+                </div>
+                <div>
+                    <span>Effective&nbsp;date:&nbsp;{{contract.effectiveDate | date:'short'}}</span>
+                </div>
+                <div>
+                    <span>Expiration&nbsp;date:&nbsp;{{contract.expirationDate | date:'short'}}</span>
+                </div>
+                <div>
+                    <span>Status:&nbsp;{{getStatusString(contract.status)}}</span>
+                </div>
+                <div fxLayout="row">
+                    <button mat-icon-button matTooltip="accept">
+                        <mat-icon>check_circle</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="decline">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="delete">
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</ng-container>

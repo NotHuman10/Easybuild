@@ -1,0 +1,114 @@
+<form [formGroup]="searchForm" (submit)="search(true)">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Search by Job Categories/Types
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-job-category-tree
+                formControlName="jobCategories"
+                [data]="jobCategories$ | async"
+                multiple="true">
+            </app-job-category-tree>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <div class="search-panel"
+        fxLayout="column"
+        fxLayout.gt-sm="row wrap"
+        fxLayoutAlign.gt-sm=" center"
+        fxLayoutGap="2em">
+        <div class="sort-by-select">
+            <mat-form-field>
+                <mat-label>Sort by</mat-label>
+                <mat-select formControlName="sortingOptions">
+                    <div
+                    *ngFor="let opt of sortingOptions"
+                    fxLayout="row"
+                    fxLayoutAlign="start center">
+                        <mat-icon [ngStyle]="{'margin':'0 .3em'}">{{opt.icon}}</mat-icon>
+                        <mat-option [value]="opt.value" fxFlex>
+                            <span>{{opt.name}}</span>
+                        </mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field>
+            <input type="checkbox" #sortAscending formControlName="sortAscending" hidden/>
+            <button
+                mat-icon-button
+                type="button"
+                color="primary"
+                (click)="toggleSortOrder()"
+                [ngClass]="{'flip-x': sortAscending.checked }"
+                matTooltip="Sort Order">
+                <mat-icon>sort</mat-icon>
+            </button>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Search by keywords</mat-label>
+                <input matInput formControlName="searchKeywords" maxlength="256">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-checkbox
+                formControlName="searchInDescription"
+                labelPosition="after"
+                color="primary">
+                Search in description
+            </mat-checkbox>
+        </div>
+        <div fxFlex></div>
+        <div>
+            <button mat-mini-fab color="primary">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div>
+        <mat-button-toggle-group
+        matTooltip="Appearance"
+        (change)="tileMode = !tileMode">
+            <mat-button-toggle checked="tileMode">
+                <mat-icon>view_module</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle checked="!tileMode">
+                <mat-icon>view_list</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</form>
+
+<ng-container *ngIf="page.items?.length; then paginator"></ng-container>
+
+<div class="search-results"
+    [fxLayout]="tileMode ? 'row wrap' : 'column wrap'"
+    fxLayoutGap="10px grid">
+    <app-advert
+        *ngFor="let item of page.items"
+        fxFlex.gt-xs="50"
+        fxFlex.gt-sm="33"
+        fxFlex.gt-md="25"
+        fxFlex.gt-lg="nogrow"
+        [tileMode]="tileMode"
+        [advert]="item">
+    </app-advert>
+</div>
+
+<ng-container *ngIf="page.items?.length; then paginator"></ng-container>
+
+<ng-template #paginator>
+    <div class="paginator">
+        <mat-paginator
+            [length]="page.totalItems"
+            [pageIndex]="page.pageIndex"
+            [pageSize]="page.pageSize"
+            [pageSizeOptions]="[5, 10, 20, 50]"
+            showFirstLastButtons="true"
+            (page)="search($event)">
+        </mat-paginator>
+    </div>
+</ng-template>

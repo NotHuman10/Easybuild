@@ -1,0 +1,167 @@
+{
+   "id":32,
+   "customerId":1,
+   "customer":{
+      "id":1,
+      "username":"d.karpljyk@gmail.com",
+      "passwordHash":"n5QSAzyZVdNq3wzUmDNe/L3EoM+5ZvkzPCKsjcMPhg0=",
+      "salt":"b4e1H07Vo0Rq/GWcWyHBrfgpepaV+OinQSyU7i8bnzo=",
+      "active":true,
+      "roleId":1,
+      "createDate":"2020-08-07T02:08:06.8791666",
+      "name":"Dmitriy",
+      "lastName":"Karpliuk",
+      "mobile":"380992648332",
+      "rating":0,
+      "avatarId":"786870d4-ab32-4c13-1b2b-08d8475e2929",
+      "bio":"test bio",
+      "contracts":[
+         
+      ],
+      "favoriteAdverts":[
+         
+      ],
+      "chats":[
+         
+      ]
+   },
+   "performerId":2,
+   "performer":{
+      "id":2,
+      "username":"test@test.com",
+      "passwordHash":"DG/s57KgRYm+4/xHpHO6yvSXEoYSX3U2WycFYZF/Hz0=",
+      "salt":"5d2M6NtXazipjhqQSwwQv6J91VicNdKV9yGtCaN6VpQ=",
+      "active":true,
+      "roleId":2,
+      "createDate":"2020-08-07T02:09:02.5695192",
+      "name":"test",
+      "lastName":"test",
+      "mobile":"111111111111",
+      "rating":0,
+      "avatarId":null,
+      "bio":null,
+      "contracts":[
+         
+      ],
+      "favoriteAdverts":[
+         
+      ],
+      "chats":[
+         
+      ]
+   },
+   "jobProposals":[
+      {
+         "id":52,
+         "name":"sdsdsdvsdvsdv",
+         "pricingUnit":"svdvsvsvsv",
+         "amount":55555,
+         "jobCategoryId":5,
+         "jobCategory":{
+            "id":5,
+            "name":"test subcategory 2.1",
+            "parentId":2,
+            "parent":null,
+            "subCategories":[
+               
+            ],
+            "active":true
+         },
+         "advertId":null,
+         "advert":null,
+         "contractId":32,
+         "price":55555.0
+      },
+      {
+         "id":53,
+         "name":"sdsdsdvsdvsdv",
+         "pricingUnit":"svdvsvsvsv",
+         "amount":56,
+         "jobCategoryId":5,
+         "jobCategory":{
+            "id":5,
+            "name":"test subcategory 2.1",
+            "parentId":2,
+            "parent":null,
+            "subCategories":[
+               
+            ],
+            "active":true
+         },
+         "advertId":null,
+         "advert":null,
+         "contractId":32,
+         "price":5.0
+      },
+      {
+         "id":54,
+         "name":"sdsdsdvsdvsdv",
+         "pricingUnit":"svdvsvsvsv",
+         "amount":56,
+         "jobCategoryId":5,
+         "jobCategory":{
+            "id":5,
+            "name":"test subcategory 2.1",
+            "parentId":2,
+            "parent":null,
+            "subCategories":[
+               
+            ],
+            "active":true
+         },
+         "advertId":null,
+         "advert":null,
+         "contractId":32,
+         "price":5.0
+      },
+      {
+         "id":55,
+         "name":"sdsdsdvsdvsdv",
+         "pricingUnit":"svdvsvsvsv",
+         "amount":56,
+         "jobCategoryId":5,
+         "jobCategory":{
+            "id":5,
+            "name":"test subcategory 2.1",
+            "parentId":2,
+            "parent":null,
+            "subCategories":[
+               
+            ],
+            "active":true
+         },
+         "advertId":null,
+         "advert":null,
+         "contractId":32,
+         "price":5.0
+      },
+      {
+         "id":56,
+         "name":"sdsdsdvsdvsdv",
+         "pricingUnit":"svdvsvsvsv",
+         "amount":56,
+         "jobCategoryId":5,
+         "jobCategory":{
+            "id":5,
+            "name":"test subcategory 2.1",
+            "parentId":2,
+            "parent":null,
+            "subCategories":[
+               
+            ],
+            "active":true
+         },
+         "advertId":null,
+         "advert":null,
+         "contractId":32,
+         "price":5.0
+      }
+   ],
+   "createdDate":"2020-08-28T01:52:19.7903617+03:00",
+   "effectiveDate":null,
+   "expirationDate":"2020-08-30T21:00:00Z",
+   "signOffDate":null,
+   "status":0,
+   "reportId":null,
+   "constructionSiteAddress":null
+}

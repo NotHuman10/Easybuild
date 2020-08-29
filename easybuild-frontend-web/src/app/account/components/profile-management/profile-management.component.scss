@@ -1,0 +1,30 @@
+.profile-panel {
+    width: 250px;
+}
+.profile-panel mat-form-field {
+    width: 100%;
+}
+.avatar-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.avatar-actions {
+    width : 100%;
+    height: 25%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba($color: #000000, $alpha: 0.5);
+    color: #ffffff;
+    font-size: 30px;
+}
+.avatar-container:hover .avatar-actions {
+    top: 75%;
+    transition: top .2s;
+}
+.avater-actions mat-icon {
+    transform: scale(2);
+}

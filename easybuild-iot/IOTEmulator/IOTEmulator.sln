@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOTEmulator", "IOTEmulator\IOTEmulator.csproj", "{87B0EC45-F4B2-4C7C-BE6C-4F71F743BD29}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easybuild.Cryptography", "..\..\easybuild-backend\Libraries\Easybuild.Cryptography\Easybuild.Cryptography.csproj", "{8D4AB707-527C-4BD2-8C04-A915ADA7A9F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87B0EC45-F4B2-4C7C-BE6C-4F71F743BD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B0EC45-F4B2-4C7C-BE6C-4F71F743BD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B0EC45-F4B2-4C7C-BE6C-4F71F743BD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B0EC45-F4B2-4C7C-BE6C-4F71F743BD29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D4AB707-527C-4BD2-8C04-A915ADA7A9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D4AB707-527C-4BD2-8C04-A915ADA7A9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D4AB707-527C-4BD2-8C04-A915ADA7A9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D4AB707-527C-4BD2-8C04-A915ADA7A9F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B769AEA6-87A7-4586-B097-16B3665FCF59}
+	EndGlobalSection
+EndGlobal

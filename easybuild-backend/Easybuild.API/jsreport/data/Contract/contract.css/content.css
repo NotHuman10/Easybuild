@@ -1,0 +1,85 @@
+body {
+    width: 1000px;
+    font-size: 18px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    color: #555;
+}
+h2 {
+    margin: 2em auto;
+}
+.page {
+    page-break-before: always;
+    page-break-after: always;
+	position: relative;
+}
+.logo {
+    width: 300px;
+    border-radius: 30px;
+    background: rgb(40, 120, 30);
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.logo img {
+	width: 100%;
+}
+.title-page {
+    padding-top: 550px;
+}
+.title-page h1 {
+    text-align: center;
+}
+.proposal-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.proposal-table td,
+.proposal-table th {
+    border: 2px solid #FFFFFF;
+    padding: 8px;
+}
+.proposal-table tbody td:nth-child(2) {
+    text-align: end;
+    width: 80%;
+}
+.proposal-table tr:nth-child(even) {
+    background: rgb(180, 230, 170);
+}
+.proposal-table thead {
+    background: rgb(40, 120, 30);
+}
+.proposal-table thead th {
+    font-weight: normal;
+    color: #FFFFFF;
+    text-align: left;
+}
+.proposal-table~.proposal-table {
+    margin-top: 20px;
+}
+.signature {
+    text-align: end;
+    margin-top: 200px;
+    font-weight: 600;
+}
+.signature > div {
+    display: inline-block;
+    width: 350px;
+    border-top: 1px solid black;
+    text-align: start;
+    padding-top: 8px;
+}
+
+.stamp {
+    display: block;
+    opacity: .8;
+    width: 230px;
+	height: 230px;
+    position: relative;
+    left: 680px;
+    bottom: 70px;
+}
+.enforceable-notification {
+    color:rgb(128, 128, 128);
+    position: absolute;
+    bottom: 0;
+}

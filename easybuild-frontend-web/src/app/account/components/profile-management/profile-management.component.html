@@ -1,0 +1,62 @@
+<div class="profile-panel">
+    <form [formGroup]="profileForm" (submit)="onSubmit()" fxLayout="column" fxLayoutGap="10px">
+        <div class="avatar-container">
+            <app-image-picker formControlName="avatar" [defaultImgSrc]="defaultAvatarUrl">
+            </app-image-picker>
+        </div>
+        <div>
+            <mat-label>Email</mat-label>
+            <input matInput [value]="user.username" disabled>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Bio</mat-label>
+                <input #bio matInput formControlName="bio" maxlength="128" />
+                <button mat-button *ngIf="bio.value" matSuffix mat-icon-button (click)="clearBioInput()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-hint align="end">{{bio.value.length}} / 128</mat-hint>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name" minlength="2" maxlength="32" required>
+                <mat-error *ngIf="profileForm.get('name').hasError('minlength')">
+                    Name must be at least 2 characters long
+                </mat-error>
+                <mat-error *ngIf="profileForm.get('name').hasError('required')">
+                    Name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text" formControlName="lastName" minlength="2" maxlength="32" required>
+                <mat-error *ngIf="profileForm.get('lastName').hasError('minlength')">
+                    Last Name must be at least 2 characters long
+                </mat-error>
+                <mat-error *ngIf="profileForm.get('lastName').hasError('required')">
+                    Last Name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Mobile phone</mat-label>
+                <span matPrefix>+&nbsp;</span>
+                <input matInput type="tel" placeholder="123456789098" formControlName="mobile">
+                <mat-error *ngIf="profileForm.get('mobile').hasError('pattern')">
+                    Mobile must be a number containing 12 - 15 digits
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <button mat-raised-button color="primary" type="submit"
+                [disabled]="profileForm.invalid || profileForm.pristine">
+                Save
+            </button>
+        </div>
+    </form>
+</div>

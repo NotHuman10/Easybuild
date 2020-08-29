@@ -1,0 +1,13 @@
+<div class="rating-stars" [class]="'rating-' + size">
+    <div class="star-empty" [style.cursor]="disabled ? 'default' : 'pointer'">
+        <mat-icon inline (click)="clickOnStar(star)" *ngFor="let star of stars">
+            star_border
+        </mat-icon>
+        <div class="star-filled" [style.width.%]="value">
+            <mat-icon inline (click)="clickOnStar(star)" *ngFor="let star of stars">
+                star
+            </mat-icon>
+        </div>
+    </div>
+    <span *ngIf="displayValue">&nbsp;{{starsNumber * value / 100}}</span>
+</div>

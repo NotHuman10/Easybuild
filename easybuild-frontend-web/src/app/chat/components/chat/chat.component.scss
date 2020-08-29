@@ -1,0 +1,93 @@
+.chat-container {
+  height: 100%;
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+}
+.chat-header {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.chat-header > app-user-avatar {
+  width: 50px;
+  height: 50px;
+}
+.chat-header > span {
+  padding-left: 10px;
+}
+.message-flow-container {
+  flex: auto;
+  position: relative;
+  overflow-y: hidden;
+}
+.message-flow-container::before, .message-flow-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: calc(100% - 8px);
+  height: 10px;
+  z-index: 400;
+}
+.message-flow-container::before {
+  top: 0;
+}
+.message-flow-container::after {
+  bottom: 0;
+}
+.message-flow {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0 16px 8px 0;
+}
+.message-flow > div {
+  margin-top: 10px;
+  max-width: 400px;
+}
+.message-flow > div:first-child {
+  margin-top: auto;
+}
+.msg-right {
+  align-self: flex-end;
+}
+.scroll-bottom {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 500;
+}
+.scroll-bottom button {
+  opacity: 0;
+}
+.scroll-bottom:hover button {
+  opacity: 1;
+  transition: opacity .1s linear;
+}
+.nomsg-placeholder {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.message-compose {
+  width: 100%;
+}
+.message-compose mat-form-field {
+  width: 100%;
+}
+.message-compose textarea {
+  resize: none;
+  height: 100%;
+  font-size: 1.2em;
+}
+.message-actions {
+  display: flex;
+  flex-direction: row;
+}
+.message-actions-spacer {
+  flex: 1;
+}

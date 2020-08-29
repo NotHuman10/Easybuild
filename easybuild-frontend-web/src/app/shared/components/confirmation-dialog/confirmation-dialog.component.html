@@ -1,0 +1,9 @@
+<div fxLayout="column" fxLayoutAlign=" center">
+  <div mat-dialog-content>
+    <p>{{data.question}}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true">{{data.okBtnText}}</button>
+    <button mat-button [mat-dialog-close]="false" cdkFocusInitial>{{data.cancelBtnText}}</button>
+  </div>
+</div>

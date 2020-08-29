@@ -1,0 +1,55 @@
+<div class="chat-container">
+    <ng-container *ngIf="chat$ | async as chat;else noMsg">
+        <div *ngIf="chat.isPrivate;else groupChat" class="chat-header">
+            <app-user-avatar [user]="chat.privateChatUser"></app-user-avatar>
+            <span>{{chat.privateChatUser.name}}&nbsp;{{chat.privateChatUser.lastName}}</span>
+        </div>
+        <ng-template #groupChat>
+            <!-- TODO: implement Group Chats -->
+        </ng-template>
+        <div class="message-flow-container">
+            <div #msgFlow class="message-flow" (scroll)="onScroll(chat.allHistoryFetched)">
+                <div *ngFor="let msg of chat.history" [ngClass]="{'msg-right': msg.isMine}">
+                    <app-message [message]="msg" [right]="msg.isMine"></app-message>
+                </div>
+            </div>
+            <div class="scroll-bottom">
+                <button mat-mini-fab color="accent" (click)="scrollToBottom()">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #noMsg>
+        <div class="nomsg-placeholder">
+            <h2>You have no messages yet...</h2>
+        </div>
+    </ng-template>
+    <form [formGroup]="messageForm" class="message-compose" (submit)="submit()">
+        <div class="message-actions">
+            <button mat-icon-button color="primary" type="button" (click)="pickEmoji()">
+                <mat-icon>sentiment_satisfied_alt</mat-icon>
+            </button>
+            <span class="message-actions-spacer"></span>
+            <button mat-icon-button color="primary" type="submit"
+                [disabled]="this.messageForm.get('text').invalid">
+                <mat-icon>send</mat-icon>
+            </button>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <textarea #msgInput
+                    formControlName="text"
+                    matInput
+                    maxlength="2048"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="4"
+                    maxlength="2048"
+                    (keypress)="keypress($event)">
+                </textarea>
+                <mat-hint align="end">{{msgInput.value.length}} / 2048</mat-hint>
+            </mat-form-field>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+.img-picker-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.img-picker-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;
+}
+.img-picker-actions {
+    width : 100%;
+    height: 25%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba($color: #000000, $alpha: 0.5);
+    color: #ffffff;
+}
+.img-picker-container:hover .img-picker-actions {
+    top: 75%;
+    transition: top .2s;
+}

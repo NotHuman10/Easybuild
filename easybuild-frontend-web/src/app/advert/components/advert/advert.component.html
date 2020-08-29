@@ -1,0 +1,68 @@
+<mat-card class="advert-container" fxLayout="column" *ngIf="tileMode;else listItem">
+    <div fxLayout="row" fxLayoutAlign="space-between">
+        <ng-container *ngTemplateOutlet="title"></ng-container>
+        <ng-container *ngTemplateOutlet="favorite"></ng-container>
+    </div>
+    <ng-container *ngTemplateOutlet="image"></ng-container>
+    <ng-container *ngTemplateOutlet="info"></ng-container>
+    <ng-container *ngTemplateOutlet="author"></ng-container>
+</mat-card>
+
+<ng-template #listItem>
+    <mat-card class="advert-container" fxLayout="row">
+        <ng-container *ngTemplateOutlet="image"></ng-container>
+        <div fxLayout="column" fxLayoutAlign="space-between">
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <ng-container *ngTemplateOutlet="title"></ng-container>
+                <ng-container *ngTemplateOutlet="favorite"></ng-container>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between end">
+                <ng-container *ngTemplateOutlet="info"></ng-container>
+                <ng-container *ngTemplateOutlet="author"></ng-container>
+            </div>
+        </div>
+    </mat-card>
+</ng-template>
+
+<ng-template #title>
+    <a [routerLink]="['/advert', advert.baseAdvert.id]" class="advert-title">
+        <span> {{advert.baseAdvert.title}}</span>
+    </a>
+</ng-template>
+
+<ng-template #favorite>
+    <app-favorite-indicator [advert]="advert" (toggled)="toggleFavorite.next($event)"></app-favorite-indicator>
+</ng-template>
+
+<ng-template #image>
+    <img
+        [src]="imageUrl || './assets/img/no-image.png'"
+        [routerLink]="['/advert', advert.baseAdvert.id]"
+        [ngClass]="{'advert-image-tile': tileMode, 'advert-image': !tileMode }">
+</ng-template>
+
+<ng-template #author>
+    <div fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="10px">
+        <app-user-avatar [user]="advert.baseAdvert.user"></app-user-avatar>
+        <div fxLayout="column" fxLayoutAlign="center">
+            <div>
+                <span>{{advert.baseAdvert.user.name}}&nbsp;{{advert.baseAdvert.user.lastName}}</span>
+            </div>
+            <div>
+                <app-rating
+                    size="small"
+                    disabled="true"
+                    displayValue="true"  
+                    [value]="advert.baseAdvert.user.rating">
+                </app-rating>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #info>
+    <div class="advert-info">
+        <span>Location&nbsp;-&nbsp;{{advert.baseAdvert.address}}</span>
+        <span>Date&nbsp;-&nbsp;{{advert.baseAdvert.createdDate | date:"MM/dd/yyyy"}}</span>
+    </div>
+</ng-template>

@@ -1,0 +1,10 @@
+@mixin chat-theme($theme) {
+    $background: map-get($theme, 'background');
+    
+    .message-flow-container::before {
+        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, mat-color($background, 'background') 100%);
+    }
+    .message-flow-container::after {
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, mat-color($background, 'background') 100%);
+    }
+}

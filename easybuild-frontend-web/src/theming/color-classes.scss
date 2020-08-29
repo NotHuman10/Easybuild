@@ -1,0 +1,59 @@
+@mixin color-classes($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  $foreground: map-get($theme, 'foreground');
+  $background: map-get($theme, 'background');
+
+  .fg-default {
+    color: mat-color($foreground, 'text')!important;
+  }
+  .fg-primary {
+    color: mat-color($primary)!important;
+  }
+  .fg-accent {
+    color: mat-color($accent)!important;
+  }
+  .fg-warn {
+    color: mat-color($warn)!important;
+  }
+  .fg-success {
+    color: #008332!important;
+  }
+  .fg-info {
+    color: #0d96ac!important;
+  }
+  .fg-alert {
+    color: #ffc107!important;
+  }
+
+  .bg-default {
+    background-color: mat-color($background, 'background')!important;
+    color: mat-color($foreground)!important;
+  }
+  .bg-primary {
+    background-color: mat-color($primary)!important;
+    color: mat-color($primary, 'default-contrast')!important;
+  }
+  .bg-accent {
+    background-color: mat-color($accent)!important;
+    color: mat-color($accent, 'default-contrast')!important;
+  }
+  .bg-warn {
+    background-color: mat-color($warn, 500)!important;
+    color: mat-color($warn, 'default-contrast')!important;
+  }
+  .bg-success {
+    background-color: #008332!important;
+    color: #ffffff!important;
+  }
+  .bg-info {
+    background-color: #0d96ac!important;
+    color: #ffffff!important;
+  }
+  .bg-alert {
+    background-color: #ffc107!important;
+    color: #000000!important;
+  }
+}

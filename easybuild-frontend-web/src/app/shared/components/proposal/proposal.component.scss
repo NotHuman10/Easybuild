@@ -1,0 +1,19 @@
+.proposal-container {
+    padding: 0;
+    overflow: hidden;
+}
+.proposal-container mat-form-field {
+    width: 100%;
+}
+.proposal-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.proposal-container tr > td:nth-child(2),
+.proposal-container tr > td:nth-child(2) > mat-form-field {
+    text-align: end;
+}
+.proposal-container td {
+    vertical-align: middle;
+    padding: 5px 10px;
+}

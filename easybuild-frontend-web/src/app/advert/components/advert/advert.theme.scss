@@ -1,0 +1,8 @@
+@mixin advert-theme($theme) {
+    $foreground: map-get($theme, 'foreground');
+    $background: map-get($theme, 'background');
+
+    .advert-title:after {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), mat-color($background, 'card') 50%);
+    }
+}

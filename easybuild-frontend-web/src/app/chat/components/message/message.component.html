@@ -1,0 +1,8 @@
+<div [ngClass]="{'message-container-left': !right, 'message-container-right': right}">
+    <div [ngClass]="{'talkbubble-left': !right, 'talkbubble-right': right}">
+        {{message.text}}
+    </div>
+    <div class="message-date">
+        {{message.createdDate | date:'short'}}
+    </div>
+</div>

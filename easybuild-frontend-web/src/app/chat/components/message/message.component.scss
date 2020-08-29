@@ -1,0 +1,41 @@
+.message-container-right, .message-container-left {
+  display: flex;
+  flex-direction: column;
+}
+.message-container-right {
+  align-items: flex-end;
+}
+.message-container-left {
+  align-items: flex-start;
+}
+.talkbubble-left, .talkbubble-right {
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  font-size: 1.2em;
+}
+.talkbubble-left {
+  border-radius: 8px 8px 8px 0;
+  margin-left: 15px;
+}
+.talkbubble-right {
+  border-radius: 8px 8px 0 8px;
+  margin-right: 15px;
+}
+.talkbubble-left::before, .talkbubble-right::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+}
+.talkbubble-left::before {
+  right: 100%;
+}
+.talkbubble-right::after {
+  left: 100%;
+}
+.message-date {
+  font-size: .8em;
+}

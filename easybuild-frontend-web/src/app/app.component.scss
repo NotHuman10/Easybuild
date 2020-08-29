@@ -1,0 +1,21 @@
+.content-container {
+  padding-top: 64px;
+  z-index: 100;
+  min-width: 600px;
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 599px) {
+  .content-container {
+    padding-top: 56px;
+  }
+}
+.page-content {
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  flex: 1;
+}

@@ -1,0 +1,31 @@
+<mat-card
+    class="chat-list-item"
+    fxLayout="row"
+    fxLayoutGap="10px"
+    [matBadge]="item.messagesCount - item.lastSeenCount"
+    [matBadgeHidden]="item.messagesCount == item.lastSeenCount"
+    matBadgeColor="accent"
+    [routerLink]="['/chat', item.id]">
+    
+    <app-user-avatar
+        *ngIf="item.participantsCount == 2;else groupChat"
+        [user]="item.privateChatUser">
+    </app-user-avatar>
+    <ng-template #groupChat>
+        <!-- TODO: implement Group Chats -->
+    </ng-template>
+    
+    <div fxFlex fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row">
+            <div fxFlex>
+                <span>{{item.name}}</span>
+            </div>
+            <div>
+                <span class="lastmsg-date">{{item.lastMessage.createdDate | date:'short'}}</span>
+            </div>
+        </div>
+        <div class="lastmsg-text">
+            <span>{{item.lastMessage.text}}</span>
+        </div>
+    </div>
+</mat-card>

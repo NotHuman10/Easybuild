@@ -1,0 +1,147 @@
+<mat-horizontal-stepper linear disableRipple="true">
+    <mat-step [stepControl]="basicInfoForm">
+        <form [formGroup]="basicInfoForm"
+            fxLayout.gt-sm="row"
+            fxLayout="column"
+            fxLayoutGap="20px">
+            <ng-template matStepLabel>Basic info</ng-template>
+            <div class="img-input">
+                <app-image-picker formControlName="image" defaultImgSrc="./assets/img/no-image.png">
+                </app-image-picker>
+            </div>
+            <div fxFlex>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Write title</mat-label>
+                        <input #title matInput formControlName="title" maxlength="128" required />
+                        <mat-hint align="end">{{title.value.length}} / 128</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>{{appropriateAddressType}}</mat-label>
+                        <input #address matInput formControlName="address" maxlength="256" required />
+                        <mat-hint align="end">{{address.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Write description</mat-label>
+                        <textarea
+                            #description
+                            matInput
+                            formControlName="description"
+                            maxlength="2048"
+                            required>
+                        </textarea>
+                        <mat-hint align="end">{{description.value.length}} / 2048</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button
+                        type="button"
+                        mat-raised-button
+                        matStepperNext
+                        fxFlexAlign="end"
+                        color="primary"
+                        [disabled]="basicInfoForm.invalid">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step #proposalStep [hasError]="!addedProposals.length">
+        <form [formGroup]="proposalForm" (submit)="addProposal()"
+            fxLayout.gt-sm="row"
+            fxLayout="column"
+            fxLayoutGap="20px">
+            <ng-template matStepLabel>Job proposals</ng-template>
+            <div fxLayout="column" fxLayoutGap="10px">
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Job categories</mat-panel-title>
+                            <mat-panel-description>Select job category for proposal</mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <app-job-category-tree
+                            formControlName="jobCategories"
+                            [data]="jobCategories$ | async"
+                            multiple="false">
+                        </app-job-category-tree>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-error *ngIf="jobCategoriesControlShowError">
+                    Please select category
+                </mat-error>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" placeholder="Ex. Brick wall construction"
+                            maxlength="200" required />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Pricing unit</mat-label>
+                        <input matInput formControlName="pricingUnit" placeholder="Ex. 1 cubic meter"
+                            maxlength="100" required />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Price</mat-label>
+                        <span matPrefix>$&nbsp;</span>
+                        <input matInput formControlName="price"
+                            type="number" step="0.01" min="0" max="2000000000" required />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Amount</mat-label>
+                        <input matInput formControlName="amount"
+                            type="number" min="0" max="2000000000" required />
+                    </mat-form-field>
+                </div>
+                <div class="step-actions">
+                    <button type="submit" mat-raised-button color="primary">
+                        {{addedProposals.length ? 'Add more' : 'Add Proposal'}}
+                    </button>
+                    <button type="button" matStepperPrevious mat-raised-button color="accent">
+                        Back
+                    </button>
+                    <button type="button" matStepperNext mat-raised-button color="primary"
+                        [disabled]="proposalStep.hasError">
+                        Next
+                    </button>
+                </div>
+            </div>
+            <div
+                fxFlex
+                fxLayout="row"
+                fxLayoutAlign.gt-sm="center center"
+                *ngIf="!addedProposals.length;else proposals">
+                <h3>Add at least one proposal...</h3>
+            </div>
+            <ng-template #proposals>
+                <div fxLayout="column" fxLayoutGap="10px" fxFlex>
+                    <div *ngFor="let proposal of addedProposals">
+                        <app-proposal
+                            [proposal]="proposal"
+                            removable="true"
+                            (removed)="removeProposal($event)">
+                        </app-proposal>
+                    </div>
+                </div>
+            </ng-template>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div fxLayout="row wrap" fxLayoutGap="20px">
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" (click)="createAdvert()">Done</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

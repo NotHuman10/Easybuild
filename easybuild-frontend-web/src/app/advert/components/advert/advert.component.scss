@@ -1,0 +1,42 @@
+.advert-container {
+  padding: 0;
+}
+.advert-container > div {
+  padding: 10px;
+  width: 100%;
+}
+.advert-title {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  width: 100%;
+  max-width: 700px;
+  height: 4.8em;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+.advert-title:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.2em;
+}
+.advert-image {
+  width: 150px;
+  min-height: 150px;
+  object-fit: cover;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.advert-image-tile {
+  width: 100%;
+  object-fit: cover;
+}
+.advert-info span {
+  font-size: .8em;
+  opacity: .8;
+  padding-right: 10px;
+}

@@ -1,0 +1,26 @@
+@mixin message-theme($theme) {
+    $primary: map-get($theme, primary);
+    $foreground: map-get($theme, 'foreground');
+    
+    .talkbubble-left {
+        color: rgb(255, 255, 255);
+    }
+    .talkbubble-right {
+        color: mat-color($primary, 'default-contrast');
+    }
+    .talkbubble-left {
+        background: rgb(105, 105, 105);
+    }
+    .talkbubble-right {
+        background: mat-color($primary);
+    }
+    .talkbubble-left::before {
+        border-right: 15px solid rgb(105, 105, 105);
+    }
+    .talkbubble-right::after {
+        border-left: 15px solid mat-color($primary);
+    }
+    .message-date {
+        color: mat-color($foreground);
+    }
+}

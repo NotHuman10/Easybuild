@@ -1,0 +1,8 @@
+<app-header (themeToggle)="setTheme($event)" [isDarkTheme]="isDarkTheme"></app-header>
+<div class="content-container">
+  <app-sidenav *forAuthorized></app-sidenav>
+  <div class="page-content">
+    <router-outlet></router-outlet>
+    <app-loading-spinner token="main-spinner" atop="true"></app-loading-spinner>
+  </div>
+</div>

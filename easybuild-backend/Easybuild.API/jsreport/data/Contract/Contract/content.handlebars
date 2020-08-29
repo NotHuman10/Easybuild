@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <style>
+        {#asset /Contract/contract.css @encoding=utf8}
+    </style>
+</head>
+
+<body>
+    <div class="page title-page">
+        <div class="logo">
+            <img src="{#asset /Contract/logo.svg @encoding=dataURI}">
+        </div>
+        <h1>Construction contract</h1>
+    </div>
+    <div class="page">
+        <h2>The preamble</h2>
+        <p>
+            This Sales Agreement (“Construction contract“) is made as of {{effectiveDate}} (the “Effective Date“) between
+            {{customer.name}}&nbsp;{{customer.lastName}} (“Customer“), and {{performer.name}}&nbsp;{{performer.lastName}} (“Performer“) for the period up to {{expirationDate}}
+            (the “Expiration date”).
+        </p>
+        <h2>Words of agreement</h2>
+        <p>
+            Performer must complete the following construction works for Customer at the specified price (price
+            specified below in tables for each type of work) before the Expiration date. The following construction
+            works must be done at the construction site located at “{{constructionSiteAddress}}”.
+        </p>
+        <h2>Construction works :</h2>
+        {{#each jobProposals}}
+        <table class="proposal-table">
+            <thead>
+                <tr>
+                    <th colspan="2">{{name}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Job Category</td>
+                    <td>{{jobCategory.name}}</td>
+                </tr>
+                <tr>
+                    <td>Pricing Unit</td>
+                    <td>{{pricingUnit}}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{{price}}</td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td>{{amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+        {{/each}}
+    </div>
+    <div class="page">
+        <h2>Signatures</h2>
+        <div class="signature">
+            <div>
+                <span>Customer</span>
+            </div>
+            <img class="stamp" src="{#asset /Contract/stamp.png @encoding=dataURI}">
+        </div>
+        <div class="signature">
+            <div>
+                <span>Customer</span>
+            </div>
+            <img class="stamp" src="{#asset /Contract/stamp.png @encoding=dataURI}">
+        </div>
+        <p class="enforceable-notification">** Protected by “Easybuild LLC”, The Contract is Enforceable.</p>
+    </div>
+</body>
+
+</html>
